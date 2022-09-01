@@ -4,6 +4,7 @@ os: linux
 
 services:
   - docker
+  - docker-compose
 
 before_install:
   - echo "Testing udagram"
