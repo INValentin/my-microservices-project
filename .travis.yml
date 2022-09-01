@@ -4,11 +4,21 @@ os: linux
 
 services:
   - docker
-  - docker-compose
 
 before_install:
   - echo "Testing udagram"
-  - docker compose -f docker-compose-build.yaml build --parallel
+  
+  # Build
+  - docker build -t udagram-api-feed ./udagram-api-feed
+  - docker build -t udagram-api-user ./udagram-api-users
+  - docker build -t reverseproxy ./udagram-reverseproxy
+  - docker build -t udagram-frontend ./udagram-frontend
+  
+  #Tagging
+  - docker tag udagram-api-feed valentinishimwe/udagram-api-feed:${TAG}
+  - docker tag udagram-api-user valentinishimwe/udagram-api-user:${TAG}
+  - docker tag reverseproxy valentinishimwe/udagram-reverseproxy:${TAG}
+  - docker tag udagram-frontend valentinishimwe/udagram-frontend:${TAG}
 
 script:
   - echo "--Script:"
@@ -16,6 +26,7 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker compose push
-
-
+  - docker push valentinishimwe/udagram-api-feed:${TAG}
+  - docker push valentinishimwe/udagram-api-user:${TAG}
+  - docker push valentinishimwe/reverseproxy:${TAG}
+  - docker push valentinishimwe/udagram-frontend:${TAG}
