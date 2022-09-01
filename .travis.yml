@@ -15,10 +15,10 @@ before_install:
   - docker build -t udagram-frontend ./udagram-frontend
   
   #Tagging
-  - docker tag udagram-api-feed valentinishimwe/udagram-api-feed:${TAG}
-  - docker tag udagram-api-user valentinishimwe/udagram-api-user:${TAG}
-  - docker tag reverseproxy valentinishimwe/udagram-reverseproxy:${TAG}
-  - docker tag udagram-frontend valentinishimwe/udagram-frontend:${TAG}
+  - docker tag udagram-api-feed ${DOCKER_USERNAME}/udagram-api-feed:${TAG}
+  - docker tag udagram-api-user ${DOCKER_USERNAME}/udagram-api-user:${TAG}
+  - docker tag reverseproxy ${DOCKER_USERNAME}/udagram-reverseproxy:${TAG}
+  - docker tag udagram-frontend ${DOCKER_USERNAME}/udagram-frontend:${TAG}
 
 script:
   - echo "--Script:"
@@ -26,7 +26,7 @@ script:
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push valentinishimwe/udagram-api-feed:${TAG}
-  - docker push valentinishimwe/udagram-api-user:${TAG}
-  - docker push valentinishimwe/reverseproxy:${TAG}
-  - docker push valentinishimwe/udagram-frontend:${TAG}
+  - docker push ${DOCKER_USERNAME}/udagram-api-feed:${TAG}
+  - docker push ${DOCKER_USERNAME}/udagram-api-user:${TAG}
+  - docker push ${DOCKER_USERNAME}/reverseproxy:${TAG}
+  - docker push ${DOCKER_USERNAME}/udagram-frontend:${TAG}
