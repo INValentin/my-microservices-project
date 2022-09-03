@@ -17,7 +17,7 @@ before_install:
   #Tagging
   - docker tag udagram-api-feed ${DOCKER_USERNAME}/udagram-api-feed:${TAG}
   - docker tag udagram-api-user ${DOCKER_USERNAME}/udagram-api-user:${TAG}
-  - docker tag reverseproxy ${DOCKER_USERNAME}/udagram-reverseproxy:${TAG}
+  - docker tag reverseproxy ${DOCKER_USERNAME}/reverseproxy:${TAG}
   - docker tag udagram-frontend ${DOCKER_USERNAME}/udagram-frontend:${TAG}
 
 script:
