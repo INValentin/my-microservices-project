@@ -42,5 +42,5 @@ venv/
 !.elasticbeanstalk/*.global.yml
 
 # file with sensitive information
-backend-*-deployment.yaml 
 aws-secret.yaml
+env-secret.yaml
