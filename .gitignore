@@ -43,3 +43,4 @@ venv/
 
 # file with sensitive information
 backend-*-deployment.yaml 
+aws-secret.yaml
