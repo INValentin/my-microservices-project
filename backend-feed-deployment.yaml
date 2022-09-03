@@ -35,7 +35,25 @@ spec:
       - name: udagram-api-feed
 
         image: valentinishimwe/udagram-api-feed
-
+        env:
+        - name: POSTGRES_USERNAME
+          value: postgres_user
+        - name: POSTGRES_PASSWORD
+          value: postpassword
+        - name: POSTGRES_HOST
+          value: udagram-database.c4rt8dbpi6rq.us-east-1.rds.amazonaws.com
+        - name: POSTGRES_DB
+          value: postgres
+        - name: AWS_BUCKET
+          value: arn:aws:s3:::udagram-bucket-990967705127
+        - name: AWS_REGION
+          value: us-east-1
+        - name: AWS_PROFILE
+          value: microuser
+        - name: JWT_SECRET
+          value: testing
+        - name: URL
+          value: http://localhost:8100
         ports:
 
         - containerPort: 80
