@@ -19,11 +19,11 @@ spec:
         image: valentinishimwe/udagram-api-feed
         envFrom:
         - secretRef:
-          name: aws-secret
+            name: aws-secret
         - secretRef: 
-          name: env-secret
+            name: env-secret
         - configMapRef:
-          name: env-configmap
+            name: env-configmap
         ports:
         - containerPort: 80
 
