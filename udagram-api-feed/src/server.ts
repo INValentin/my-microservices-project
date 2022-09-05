@@ -8,6 +8,8 @@ import bodyParser from 'body-parser';
 import {config} from './config/config';
 import {V0_FEED_MODELS} from './controllers/v0/model.index';
 
+// Logging
+var morgan = require('morgan');
 
 (async () => {
   await sequelize.addModels(V0_FEED_MODELS);
@@ -33,6 +35,8 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
     preflightContinue: true,
     origin: '*',
   }));
+
+  app.use(morgan('combined'));
 
   app.use('/api/v0/', IndexRouter);
 
