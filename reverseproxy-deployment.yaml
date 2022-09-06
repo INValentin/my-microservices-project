@@ -17,5 +17,6 @@ spec:
       containers:
       - name: reverseproxy
         image: valentinishimwe/reverseproxy
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 8080

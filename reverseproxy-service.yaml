@@ -6,7 +6,8 @@ metadata:
     run: reverse-proxy
 spec:
   ports:
-  - port: 80
-    protocol: TCP
+  - name: "8080"
+    port: 8080
+    targetPort: 8080
   selector:
-    run: reverse-proxy
+    service: reverse-proxy
