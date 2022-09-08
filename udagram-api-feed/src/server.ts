@@ -8,16 +8,19 @@ import bodyParser from 'body-parser';
 import {config} from './config/config';
 import {V0_FEED_MODELS} from './controllers/v0/model.index';
 
-// Logging
+// Logging library
 var morgan = require('morgan');
 
 (async () => {
-  await sequelize.addModels(V0_FEED_MODELS);
 
+  const app = express();
+  // Logging with morgan middleware
+  app.use(morgan('combined'));
+
+  await sequelize.addModels(V0_FEED_MODELS);
   console.debug("Initialize database connection...");
   await sequelize.sync();
 
-  const app = express();
   const port = process.env.PORT || 8080;
 
   app.use(bodyParser.json());
@@ -26,17 +29,11 @@ var morgan = require('morgan');
   // worry about the complexities of CORS this lesson. It's
   // something that will be covered in the next course.
   app.use(cors({
-    allowedHeaders: [
-      'Origin', 'X-Requested-With',
-      'Content-Type', 'Accept',
-      'X-Access-Token', 'Authorization',
-    ],
     methods: 'GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE',
-    preflightContinue: true,
+    preflightContinue: false,
     origin: '*',
   }));
 
-  app.use(morgan('combined'));
 
   app.use('/api/v0/', IndexRouter);
 
