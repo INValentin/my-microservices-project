@@ -9,4 +9,4 @@ spec:
   - name: "8080"
     port: 8080
   selector:
-    select: backend-feed
+    run: backend-feed
