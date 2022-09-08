@@ -8,4 +8,4 @@ data:
   POSTGRES_HOST: udagram-database.cdwp5bgmsztv.us-east-1.rds.amazonaws.com
   AWS_PROFILE: microuser
   JWT_SECRET: testing
-  URL: ae6d24b871c2646cd87a44f03f1f49ad-63860994.us-east-1.elb.amazonaws.com
+  URL: a5c72d0da52cf404f927bd10c4f9f571-1105379326.us-east-1.elb.amazonaws.com
